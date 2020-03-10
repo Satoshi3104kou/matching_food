@@ -1,0 +1,18 @@
+.header
+  
+  .header__left
+    = link_to "Maching food", root_path, class: "header__left"
+   
+  .header__right
+    - if user_signed_in?
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__right__logo-a"
+      = link_to "条件・サービス変更", new_food_path, class: "header__right__logo-b"
+    - else
+      飲食店の方
+      = link_to "ログイン", new_user_session_path, class: "header__right__logo-a"
+      = link_to "登録", new_user_registration_path, class: "header__right__logo-b"
+
+
+.main
+
+    

@@ -1,0 +1,33 @@
+.single-main
+  .single-main__head
+    %h2 
+      飲食店情報入力
+  .single-main__form
+    = form_with model: @user, url: user_registration_path, class: :form, local: true do |f|
+      .l-single-content
+        .l-single-content__group
+          %label 店舗名
+          %span 必須
+          = f.text_field :store_name, autofocus: true
+        .l-single-content__group
+          %label メールアドレス
+          %span 必須
+          = f.email_field :email, placeholder: "PC・携帯どちらでも可"
+        .l-single-content__group
+          %label{:for => ""} パスワード
+          %span 必須
+          = f.password_field :password, placeholder: "7文字以上"
+          %p.text-gray
+            ※ 英字と数字の両方を含めて設定してください
+        .l-single-content__group
+          %label{:for => ""} 電話番号
+          %span 必須
+          = f.phone_field :phone_num, placeholder: "携帯電話でも可"
+          
+      .l-single-content
+        .l-single-content__group
+          %p
+            「登録」のボタンを押すことにより、利用規約に同意したものとみなします
+        .actions
+          = f.submit "登録", class: 'next-btn'
+        

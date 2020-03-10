@@ -1,0 +1,79 @@
+.header
+  
+  .header__left
+    = link_to "Maching food", root_path, class: "header__left"
+   
+
+.store
+  .store__form
+    .store__form__content
+      .store__form__sub_head
+        .h1 店舗側の条件
+        .store__form_group
+        = form_with model: @food, local: true, class:"store__form__head_box" do |f|
+ 
+          .form_group
+            %label
+            用途
+            %span.form_require
+              必須
+            .div
+            = f.select :way, Food.ways.keys, {prompt:"選択してください"}, class: 'store__select',id:"way"
+          .form_group
+            %label
+            利用動機
+            %span.form_require
+              必須
+            .div
+            = f.select :motivation, Food.motivations.keys, {prompt:"選択してください"}, class: 'store__select',id:"motivation"
+           
+          .form_group
+            %label
+            ジャンル
+            %span.form_require
+              必須
+            .genre1
+              = f.collection_select :genre, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+
+          .form_group
+            %label
+            場所
+            %span.form_require
+              必須
+            .div
+            = f.select :wards, Food.wards.keys, {prompt:"選択してください"}, class: 'store__select',id:"wards"
+          
+          .form_group
+            %label
+            席タイプ
+            %span.form_require
+              必須
+            .div
+            = f.select :table, Food.tables.keys, {prompt:"選択してください"}, class: 'store__select',id:"table"
+
+            .form_group
+              %label
+              人数
+              %span.form_require
+                必須
+              .div
+              = f.select :people, Food.people.keys, {prompt:"選択してください"}, class: 'store__select',id:"people"
+            
+            .form_group
+              %label
+              時間帯
+              %span.form_require
+                必須
+              .div
+              = f.select :time, Food.times.keys, {prompt:"選択してください"}, class: 'store__select',id:"time"
+
+          
+            .store__form__content
+              .store__form__content_text
+        
+              %button.store__form__btn{type: "submit"}
+                出品する
+            
+              %button.store__form__back_btn{type: "submit"}
+                もどる
+  

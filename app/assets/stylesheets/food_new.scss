@@ -1,0 +1,104 @@
+.store {
+  background: cover;
+  background-color: #fef4f4;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  height: 100%;
+  &__form{
+    width: 700px;
+    padding: 40px;
+    margin: 0 auto;
+    background-color: #fff;
+    height: calc(100% - 110px);
+    &__content {
+      padding: 0 40px 0 40px;
+    }
+  
+    .store__select {
+      height: 48px;
+      width: 100%;
+      padding: 0 16px;
+      margin-top: 8px;
+      background-color: #fff;
+    }
+    .store__form__sub_head{
+      width: 100%;
+      
+      .h1{
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      .store__select1{
+        height: 48px;
+        width: 100%;
+        padding: 0 16px;
+        margin-top: 8px;
+        background-color: #fff;
+      }
+      #genre_children{
+        height: 48px;
+        width: 100%;
+        padding: 0 16px;
+        margin-top: 8px;
+        background-color: #fff;
+      }
+
+      #genre_grandchildren{
+        height: 48px;
+        width: 100%;
+        padding: 0 16px;
+        margin-top: 8px;
+        background-color: #fff;
+      }
+    
+      .form_group{
+        font-weight: 300;
+        margin-top: 20px;
+      }
+    }
+    
+    &__content {
+      padding: 40px;
+    }
+    
+    &__content_text {
+      font-size: 14px;
+    }
+    
+    &__btn {
+      height: 50px;
+      width: 550px;
+      margin-top: 40px;
+      background-color: #3ccace;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    &__back_btn {
+      height: 50px;
+      width: 200px;
+      margin: 24px 170.5px 0;
+      background-color: #aaa;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+  }
+} 
+
+span {
+  background-color: #eebbcb;
+  color: #fff;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  font-size: 12px;
+  border-radius: 2px;
+}
