@@ -7,7 +7,7 @@ $(function(){
       var select_id = `genre_grandchildren`
     }
     var html =
-    `<select name="food[genre]" id="${select_id}">
+    `<select name="food[genre_id]" id="${select_id}">
         <option value>選択してください</option>
     </select>`
     genre.append(html)

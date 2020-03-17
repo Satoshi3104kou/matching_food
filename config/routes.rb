@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
   root to: 'foods#index'
+  devise_for :users
+  resources :users, only: [:show ]
+  
+
+  
+  
+  
   resources :foods do
     collection do
       get 'genre'
-     
     end
   
+    collection do
+      get 'search'
+    end
   end
 end

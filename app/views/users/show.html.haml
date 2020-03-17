@@ -1,0 +1,97 @@
+.header
+  
+  .header__left
+    = link_to "Maching food", root_path, class: "header__left"
+   
+- @foods.each do |f|
+  -# #{i}つ目のサービスです。
+
+  .store
+    .store__form
+      .store__form__content
+        .store__form__sub_head
+          .store__form__sub_head__header 
+            = @store_name
+            の条件
+          .store__form_group
+          = form_with model: @user, local: true, class:"store__form__head_box" do |f|
+  
+            .form_group
+              %label1
+                用途
+              -# %span
+              -#   必須
+              .content
+                = @food.way
+              -# = f.select :way, Food.ways.keys, {prompt:"選択してください"}, class: 'store__select',id:"way"
+            .form_group
+              %label1
+                利用動機
+              -# %span
+              -#   必須
+              .content
+                = @food.motivation
+              -# = f.select :motivation, Food.motivations.keys, {prompt:"選択してください"}, class: 'store__select',id:"motivation"
+            
+            .form_group
+              %label1
+                ジャンル
+              -# %span
+              -#   必須
+              .genre2
+                -# = @parent.name
+                -# = @child.name
+                = @ground_child.name
+
+            .form_group
+              %label1
+                場所
+              -# %span
+              -#   必須
+              .content
+                = @food.wards
+              -# = f.select :wards, Food.wards.keys, {prompt:"選択してください"}, class: 'store__select',id:"wards"
+            
+            .form_group
+              %label1
+                席タイプ
+              -# %span
+              -#   必須
+              .content
+                = @food.table
+              -# = f.select :table, Food.tables.keys, {prompt:"選択してください"}, class: 'store__select',id:"table"
+
+              .form_group
+                %label1
+                  人数
+                -# %span
+                -#   必須
+                .content
+                  = @food.people
+                -# = f.select :people, Food.people.keys, {prompt:"選択してください"}, class: 'store__select',id:"people"
+              
+              .form_group
+                %label1
+                  時間帯
+                -# %span
+                -#   必須
+                .content
+                  = @food.time
+                -# = f.select :time, Food.times.keys, {prompt:"選択してください"}, class: 'store__select',id:"time"
+
+              .form_group
+                %label1
+                  サービス内容
+                -# %span
+                -#   必須
+                .service
+                  = @food.service
+                -# =f.text_field :service, class:"store__input", placeholder:"ファーストドリンクサービス"
+              .store__form__content
+                .store__form__content_text
+                  = link_to " 編集する", edit_food_path(@food.id), class: "store__form__back_btn_a"
+                  = link_to " 削除する", food_path(@food.id),method: :delete, class: "store__form__back_btn_b"
+
+                = link_to "決定する", root_path(@food.id), class: "store__form__btn"
+
+                  

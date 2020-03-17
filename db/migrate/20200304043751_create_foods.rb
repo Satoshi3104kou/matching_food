@@ -7,16 +7,16 @@ class CreateFoods < ActiveRecord::Migration[5.2]
       t.integer :table
       t.integer :people
       t.integer :time
-      t.string :genre
+      t.references :genre
       t.integer :way
-      t.references  :service
+      t.string  :service
     end
 
-    create_table :genres do |t|
-      t.string :name
-      t.string :ancestry
-      t.timestamps
-    end
-    add_index :genres, :ancestry
+  #   create_table :genres do |t|
+  #     t.string :name
+  #     t.string :ancestry
+  #     t.timestamps
+  #   end
+  #   add_index :genres, :ancestry
   end
 end

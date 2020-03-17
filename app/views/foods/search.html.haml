@@ -1,0 +1,19 @@
+.header
+  
+  .header__left
+    = link_to "Maching food", root_path, class: "header__left"
+   
+.store
+  .store__form
+    .store__form__content
+      .store__form__sub_head
+        .store__form__sub_head__header 
+          店名
+          = @store_name
+        .store__form_group
+          .form_group
+            %label
+              サービス内容
+            .service
+              -# = @food.service
+              サービス

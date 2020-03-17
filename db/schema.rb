@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_093252) do
+ActiveRecord::Schema.define(version: 2020_03_12_103304) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "way"
@@ -19,13 +19,14 @@ ActiveRecord::Schema.define(version: 2020_03_05_093252) do
     t.integer "table"
     t.integer "people"
     t.integer "time"
-    t.string "genre"
-    t.bigint "service_id"
-    t.index ["service_id"], name: "index_foods_on_service_id"
+    t.bigint "genre_id"
+    t.string "service"
+    t.integer "user_id"
+    t.index ["genre_id"], name: "index_foods_on_genre_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_093252) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "store_name", null: false
+    t.string "store_name", null: false
     t.string "phone_num", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

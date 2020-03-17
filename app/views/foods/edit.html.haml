@@ -8,9 +8,9 @@
   .store__form
     .store__form__content
       .store__form__sub_head
-        .store__form__sub_head__header
-          = @store_name
-          の条件
+        .h1 
+        = @store_name
+        の条件
         .store__form_group
         = form_with model: @food, local: true, class:"store__form__head_box" do |f|
  
@@ -37,6 +37,13 @@
             .genre1
               = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
 
+              -# =f.select :genre_id, {"#{@parent.name}": "#{@parent.id}"}, {},  class: 'store__select1', id: 'parent-genre'
+              -# =f.select :genre_id, {"#{@child.name}": "#{@child.id}"}, {}, class: 'store__select1', id: 'parent-genre'
+              -# =f.select :genre_id, {"#{@ground_child.name}": "#{@ground_child.id}"}, {},  class: 'store__select1', id: 'parent-genre'
+
+              -# = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+              -# = f.collection_select :genre_id, @child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+              -# = f.collection_select :genre_id, @ground_child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
           .form_group
             %label
             場所
@@ -68,7 +75,7 @@
                 必須
               .div
               = f.select :time, Food.times.keys, {prompt:"選択してください"}, class: 'store__select',id:"time"
-            
+
             .form_group
               %label
               サービス内容
@@ -77,12 +84,10 @@
               .div
               =f.text_field :service, class:"store__input", placeholder:"ファーストドリンクサービス"
 
-          
             .store__form__content
               .store__form__content_text
-        
-                %button.store__form__btn{type: "submit"}
-                  確認する
-              
-              = link_to "戻る", root_path(@food.id), class: "store__form__btn_c"
-    
+                -# = link_to " 編集する", edit_food_path(@food.id), class: "store__form__back_btn_a"
+              = link_to " 削除する", edit_food_path(@food.id), class: "store__form__btn_c"
+
+              = link_to "決定する", root_path(@food.id), class: "store__form__btn"
+  

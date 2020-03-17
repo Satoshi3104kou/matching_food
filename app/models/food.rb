@@ -1,5 +1,7 @@
 class Food < ApplicationRecord
 
+  belongs_to :user
+  belongs_to :genre
   enum way: {
     職場の近く:1, 自宅の近く:2, 用件先の近く:3
   },_prefix: true
@@ -28,5 +30,9 @@ class Food < ApplicationRecord
     ランチ:1, カフェ:2, ディナー:3, ミッドナイト:4,
   },_prefix: true
 
+  def self.search(search)
+    return Food.all unless search
+    Food.where(' LIKE (?)', "%#{search}%")
+  end
 
 end
