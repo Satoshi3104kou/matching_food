@@ -36,14 +36,15 @@
               必須
             .genre1
               = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
-
-              -# =f.select :genre_id, {"#{@parent.name}": "#{@parent.id}"}, {},  class: 'store__select1', id: 'parent-genre'
-              -# =f.select :genre_id, {"#{@child.name}": "#{@child.id}"}, {}, class: 'store__select1', id: 'parent-genre'
-              -# =f.select :genre_id, {"#{@ground_child.name}": "#{@ground_child.id}"}, {},  class: 'store__select1', id: 'parent-genre'
-
               -# = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
               -# = f.collection_select :genre_id, @child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
               -# = f.collection_select :genre_id, @ground_child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+              = f.collection_select :genre_id, @genre_child_array, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'genre_children'
+              = f.collection_select :genre_id, @genre_grandchild_array, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'genre_grandchildren'
+              -# = f.select :genre_id, options_for_select(@genre_parent_array.map{|c|[c, {}]}, @food.genre.parent.parent.name), {}, {class: 'store__select1', id: 'parent-genre'}
+              -# = f.select :genre_id, options_for_select(@genre_child_array.map{|c|[c[:name], c[:id], {'data-genre'=>c[:id], 'id'=>c[:id]}]}, @food.genre.parent.id), {}, {class: 'store__select1', id: 'genre_children'}
+              -# = f.select :genre_id, options_for_select(@genre_grandchild_array.map{|c|[c[:name], c[:id], {'data-genre'=>c[:id], 'id'=>c[:id]}]}, @food.genre.id), {}, {class: 'store__select1', id: 'genre_grandchildren'}
+              -# = f.text_field :genre_id, id: 'grand_child_result_id', type: 'hidden'              
           .form_group
             %label
             場所
@@ -87,7 +88,8 @@
             .store__form__content
               .store__form__content_text
                 -# = link_to " 編集する", edit_food_path(@food.id), class: "store__form__back_btn_a"
-              = link_to " 削除する", edit_food_path(@food.id), class: "store__form__btn_c"
-
-              = link_to "決定する", root_path(@food.id), class: "store__form__btn"
+              = link_to " 削除する", food_path(@food.id),method: :delete, class: "store__form__btn_c"
+              -# = link_to "確認する", food_path(@food.id), class: "store__form__btn"
+              %button.store__form__btn{type: "submit"}
+                確認する
   

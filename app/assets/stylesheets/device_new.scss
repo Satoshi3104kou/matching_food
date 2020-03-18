@@ -1,111 +1,270 @@
+$color-blue  : #3CCACE;
+$base-color  : #fff;
+$border-color: #ccc;
+$gray-color  : #f5f5f5;
+$font-mini   : 14px;
+$font-regular: 16px;
 
-.wrapper{
-  height: 100vh;
-  width: 100%;
-  font-family:'MyFont';
-  text-align:center;
-  background-color: green;
-  // background-image:  url(黒板.jpg);
-  background-position: center center;
-  background-size:  cover; 
-  font-family:'fantasy';
+
+@mixin box-in {
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  background: $base-color;
+  line-height: 1.5;
+  font-size: $font-regular;
+  box-sizing: border-box
+}
+
+@mixin span-in {
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: $base-color;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+
+
+.single-main1{
+  width: 700px;
+  margin: 150px auto;
+  background: $base-color;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+
+  &__head{
+  height:97px; 
   
+  h2{
+  font-weight: bold;
+  font-size: 22px;
+  padding: 32px;
+  text-align: center;
+  }
+ }
+
+  &__form{
+    border-top: 1px solid $gray-color;
+    padding: 24px 16px 40px;
+  }
+}
+
+.l-single-content{
+  max-width: 343px;
+  margin: 0 auto;
   
-  .title{
+  &__group{ 
+    margin: 24px 0 0;
+  
+    label{
+      font-weight: 600;
+    }
+    
+    span{
+      @include span-in;
+      background: $color-blue;
+      margin: 0 0 0 8px;
+
+      
+    }
+
+    .span-form-group_birth{
+      @include span-in;
+      margin: 0 2px;
+    }
+
+    input{
+      @include box-in;
+      width: 100%;
+    }
+   select{
+     @include box-in;
+     width: 100%;
+   }
+   
+    p{
+     margin:8px 0 0;
+     font-size: $font-mini;
+   }
+
+   
+   h3{
+    font-size: $font-regular; 
     font-weight: bold;
-    font-size: 50px;
-    padding-top: 30px;
-    font-family:fantasy;
-    color: whitesmoke;
+   }
+   
+  }
+  
+  &__btn{
+  display: block;
+  margin:0 auto;
+  width: 100%;
+  line-height: 48px;
+  font-size: $font-mini;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  text-align: center;
+  text-decoration:none;
+  background: $color-blue;
+  a {
+    color: $base-color;
+
+  }
+ }
+}
+
+   
+.name-form{
+
+  input{
+    @include box-in;
+    width: calc(50% - 6px);
+  }
+ }
+
+.birthday-form{
+  select{
+    @include box-in;
+    width: 76px;
+  }
+}
+
+.actions{
+  text-decoration:none;
+  margin: 24px 0 0;
+
+.next-btn{
+  display: block;
+  text-decoration:none;
+  width: 100%;
+  line-height: 48px;
+  font-size: $font-mini;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  background: $color-blue;
+  border: 1px solid $color-blue;
+  color: $base-color;
+}
+
+}
+
+
+
+
+
+
+// .wrapper{
+//   height: 100vh;
+//   width: 100%;
+//   font-family:'MyFont';
+//   text-align:center;
+//   background-color: green;
+//   // background-image:  url(黒板.jpg);
+//   background-position: center center;
+//   background-size:  cover; 
+//   font-family:'fantasy';
+  
+  
+//   .title{
+//     font-weight: bold;
+//     font-size: 50px;
+//     padding-top: 30px;
+//     font-family:fantasy;
+//     color: whitesmoke;
     
     
 
-  }
+//   }
 
-  .field-email{
-    margin-top: 80px;
-    color: whitesmoke;
-    font-family:fantasy;
+//   .field-email{
+//     margin-top: 80px;
+//     color: whitesmoke;
+//     font-family:fantasy;
     
-  }
-  #user_email{
-    background    :rgba(0,0,0,0); 
-    // box-shadow    : 20px 20px 47px #666666;
-    height: 40px;
-    width: 300px;
-    transition: all .6s ease;
-    border-bottom:1px solid #cccccc;
-    border-right:none;
-    border-left:none;
-    border-top:none;
-    border-radius:0px;
-    color: whitesmoke;
-    font-family:fantasy;
-  }
+//   }
+//   #user_email{
+//     background    :rgba(0,0,0,0); 
+//     // box-shadow    : 20px 20px 47px #666666;
+//     height: 40px;
+//     width: 300px;
+//     transition: all .6s ease;
+//     border-bottom:1px solid #cccccc;
+//     border-right:none;
+//     border-left:none;
+//     border-top:none;
+//     border-radius:0px;
+//     color: whitesmoke;
+//     font-family:fantasy;
+//   }
 
-  .field-pass{
-    margin-top: 30px;
-    color: whitesmoke;
-    font-family:fantasy;
+//   .field-pass{
+//     margin-top: 30px;
+//     color: whitesmoke;
+//     font-family:fantasy;
 
-  }
-  #user_password{
-    background    :rgba(0,0,0,0); 
-    // box-shadow    : 20px 20px 47px #666666;
-    height: 40px;
-    width: 300px;
-    border-bottom:1px solid #cccccc;
-    border-right:none;
-    border-left:none;
-    border-top:none;
-    border-radius:0px;
-    font-family:fantasy;
-  }
+//   }
+//   #user_password{
+//     background    :rgba(0,0,0,0); 
+//     // box-shadow    : 20px 20px 47px #666666;
+//     height: 40px;
+//     width: 300px;
+//     border-bottom:1px solid #cccccc;
+//     border-right:none;
+//     border-left:none;
+//     border-top:none;
+//     border-radius:0px;
+//     font-family:fantasy;
+//   }
 
-  .field-confimation{
-    margin-top: 30px;
-    color: whitesmoke;
-    background    :rgba(0,0,0,0); 
-    font-family:fantasy;
+//   .field-confimation{
+//     margin-top: 30px;
+//     color: whitesmoke;
+//     background    :rgba(0,0,0,0); 
+//     font-family:fantasy;
 
-  }
-  #user_password_confirmation{
-    background    :rgba(0,0,0,0); 
-    // box-shadow    : 20px 20px 47px #666666;
-    height: 40px;
-    width: 300px;
-    border-bottom:1px solid #cccccc;
-    border-right:none;
-    border-left:none;
-    border-top:none;
-    border-radius:0px;
-    font-family:fantasy;
+//   }
+//   #user_password_confirmation{
+//     background    :rgba(0,0,0,0); 
+//     // box-shadow    : 20px 20px 47px #666666;
+//     height: 40px;
+//     width: 300px;
+//     border-bottom:1px solid #cccccc;
+//     border-right:none;
+//     border-left:none;
+//     border-top:none;
+//     border-radius:0px;
+//     font-family:fantasy;
     
-  }
+//   }
 
  
 
-  .button{
-    margin-top: 80px;
-    display       : inline-block;
-    border-radius : 50%;          /* 角丸       */
-    font-size     : 18pt;        /* 文字サイズ */
-    text-align    : center;      /* 文字位置   */
-    cursor        : pointer;     /* カーソル   */
-    padding       : 25px 25px;   /* 余白       */
-    background    :rgba(0,0,0,0);     /* 背景色     */
-    color         : #ffffff;     /* 文字色     */
-    line-height   : 1em;         /* 1行の高さ  */
-    opacity       : 1;           /* 透明度     */
-    transition    : .3s;         /* なめらか変化 */
-    box-shadow    : 20px 20px 47px #666666;  /* 影の設定 */
-    text-decoration: none;
-    font-family:fantasy;
-  }
-  .button:hover {
-    box-shadow    : none;        /* カーソル時の影消去 */
-    color         : #003300;     /* 背景色     */
-    background    : #ffffff;     /* 文字色     */
-  }
+//   .button{
+//     margin-top: 80px;
+//     display       : inline-block;
+//     border-radius : 50%;          /* 角丸       */
+//     font-size     : 18pt;        /* 文字サイズ */
+//     text-align    : center;      /* 文字位置   */
+//     cursor        : pointer;     /* カーソル   */
+//     padding       : 25px 25px;   /* 余白       */
+//     background    :rgba(0,0,0,0);     /* 背景色     */
+//     color         : #ffffff;     /* 文字色     */
+//     line-height   : 1em;         /* 1行の高さ  */
+//     opacity       : 1;           /* 透明度     */
+//     transition    : .3s;         /* なめらか変化 */
+//     box-shadow    : 20px 20px 47px #666666;  /* 影の設定 */
+//     text-decoration: none;
+//     font-family:fantasy;
+//   }
+//   .button:hover {
+//     box-shadow    : none;        /* カーソル時の影消去 */
+//     color         : #003300;     /* 背景色     */
+//     background    : #ffffff;     /* 文字色     */
+//   }
 
-}
+// }

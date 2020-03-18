@@ -2,6 +2,8 @@ class FoodsController < ApplicationController
   def index
     @food = Food.new
     @parents = Genre.where(ancestry: nil)
+    # @user = User.find(params[:id])
+
   end
 
 
@@ -41,19 +43,31 @@ class FoodsController < ApplicationController
     @child = @ground_child.parent
     @parent = @child.parent
     @store_name = current_user.store_name
+    @genre_parent_array = []
+    # categoriesテーブルから親カテゴリーのみを抽出、配列に格納
+    Genre.where(ancestry: nil).each do |parent|
+    @genre_parent_array << parent.name
+    end
+
+    # itemに紐づいていいる孫カテゴリーの親である子カテゴリが属している子カテゴリーの一覧を配列で取得
+    @genre_child_array = @food.genre.parent.parent.children
+
+    # itemに紐づいていいる孫カテゴリーが属している孫カテゴリーの一覧を配列で取得
+    @genre_grandchild_array = @food.genre.parent.children
   end
 
 
   def update
-    # if @food.update(food_params)
-    #   redirect_to root_path
-    # else
-    #   flash[:notice] = "必須項目を全て入力してください。"
-    #   redirect_to edit_food_path 
-    # end
-    food = Food.find(params[:id])
-    food.update(food_params)
-    redirect_to root_path
+    @food = Food.find(params[:id])
+    if @food.update(food_params)
+      redirect_to food_path
+    else
+      flash[:notice] = "必須項目を全て入力してください。"
+      redirect_to edit_food_path 
+    end
+    # food = Food.find(params[:id])
+    # food.update(food_params)
+    # redirect_to root_path
   end
   
 
@@ -65,9 +79,10 @@ class FoodsController < ApplicationController
   end
 
   def search
+    # @word = Word.search(params[:keyword]).first
     # @food = Food.new
     # food = Food.find(params[:id])
-    @parents = Genre.where(ancestry: nil)
+    # @parents = Genre.where(ancestry: nil)
     @food = Food.search(params[:keyword])
     
     # if @food

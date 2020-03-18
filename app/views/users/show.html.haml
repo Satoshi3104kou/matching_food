@@ -3,8 +3,9 @@
   .header__left
     = link_to "Maching food", root_path, class: "header__left"
    
-- @foods.each do |f|
-  -# #{i}つ目のサービスです。
+- @foods.each.with_index(1) do |food, i|
+  -# .service_head
+  -#   #{i}つ目のサービスです。
 
   .store
     .store__form
@@ -12,7 +13,9 @@
         .store__form__sub_head
           .store__form__sub_head__header 
             = @store_name
-            の条件
+          .service_head
+            #{i}つ目のサービスです。
+
           .store__form_group
           = form_with model: @user, local: true, class:"store__form__head_box" do |f|
   
@@ -22,7 +25,7 @@
               -# %span
               -#   必須
               .content
-                = @food.way
+                = food.way
               -# = f.select :way, Food.ways.keys, {prompt:"選択してください"}, class: 'store__select',id:"way"
             .form_group
               %label1
@@ -30,7 +33,8 @@
               -# %span
               -#   必須
               .content
-                = @food.motivation
+                = food.motivation
+                -# = @foods.motivation
               -# = f.select :motivation, Food.motivations.keys, {prompt:"選択してください"}, class: 'store__select',id:"motivation"
             
             .form_group
@@ -39,9 +43,13 @@
               -# %span
               -#   必須
               .genre2
+                =food.genre.root.name
+                =food.genre.parent.name
+                =food.genre.name
+
                 -# = @parent.name
                 -# = @child.name
-                = @ground_child.name
+                -# = @ground_child.name
 
             .form_group
               %label1
@@ -49,7 +57,8 @@
               -# %span
               -#   必須
               .content
-                = @food.wards
+                = food.wards
+                -# = @foods.wards
               -# = f.select :wards, Food.wards.keys, {prompt:"選択してください"}, class: 'store__select',id:"wards"
             
             .form_group
@@ -58,7 +67,8 @@
               -# %span
               -#   必須
               .content
-                = @food.table
+                = food.table
+                -# = @foods.table
               -# = f.select :table, Food.tables.keys, {prompt:"選択してください"}, class: 'store__select',id:"table"
 
               .form_group
@@ -67,7 +77,8 @@
                 -# %span
                 -#   必須
                 .content
-                  = @food.people
+                  = food.people
+                  -# = @foods.people
                 -# = f.select :people, Food.people.keys, {prompt:"選択してください"}, class: 'store__select',id:"people"
               
               .form_group
@@ -76,7 +87,8 @@
                 -# %span
                 -#   必須
                 .content
-                  = @food.time
+                  = food.time
+                  -# = @foods.time
                 -# = f.select :time, Food.times.keys, {prompt:"選択してください"}, class: 'store__select',id:"time"
 
               .form_group
@@ -85,13 +97,13 @@
                 -# %span
                 -#   必須
                 .service
-                  = @food.service
+                  = food.service
                 -# =f.text_field :service, class:"store__input", placeholder:"ファーストドリンクサービス"
               .store__form__content
                 .store__form__content_text
-                  = link_to " 編集する", edit_food_path(@food.id), class: "store__form__back_btn_a"
-                  = link_to " 削除する", food_path(@food.id),method: :delete, class: "store__form__back_btn_b"
+                  = link_to " 編集する", edit_food_path(food), class: "store__form__back_btn_a"
+                  = link_to " 削除する", food_path(food),method: :delete, class: "store__form__back_btn_b"
 
-                = link_to "決定する", root_path(@food.id), class: "store__form__btn"
+                -# = link_to "決定する", root_path(@foods), class: "store__form__btn"
 
                   
