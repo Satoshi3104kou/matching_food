@@ -36,15 +36,19 @@
               必須
             .genre1
               = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
-              -# = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
-              -# = f.collection_select :genre_id, @child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
-              -# = f.collection_select :genre_id, @ground_child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
               = f.collection_select :genre_id, @genre_child_array, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'genre_children'
               = f.collection_select :genre_id, @genre_grandchild_array, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'genre_grandchildren'
               -# = f.select :genre_id, options_for_select(@genre_parent_array.map{|c|[c, {}]}, @food.genre.parent.parent.name), {}, {class: 'store__select1', id: 'parent-genre'}
               -# = f.select :genre_id, options_for_select(@genre_child_array.map{|c|[c[:name], c[:id], {'data-genre'=>c[:id], 'id'=>c[:id]}]}, @food.genre.parent.id), {}, {class: 'store__select1', id: 'genre_children'}
               -# = f.select :genre_id, options_for_select(@genre_grandchild_array.map{|c|[c[:name], c[:id], {'data-genre'=>c[:id], 'id'=>c[:id]}]}, @food.genre.id), {}, {class: 'store__select1', id: 'genre_grandchildren'}
-              -# = f.text_field :genre_id, id: 'grand_child_result_id', type: 'hidden'              
+              -# = f.text_field :genre_id, id: 'grand_child_result_id', type: 'hidden'       
+              -# = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+              -# = f.collection_select :genre_id, @child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+              -# = f.collection_select :genre_id, @ground_child, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+              -# = cat.select '', options_for_select([@sale.categories[0]].map{|c|[c[:name], c[:id]]}), {}, id: "category-first"
+              -# = cat.select '', options_for_select([@sale.categories[1]].map{|c|[c[:name], c[:id]]}), {}, id: "category-second"
+              -# = cat.select '', options_for_select([@sale.categories[2]].map{|c|[c[:name], c[:id]]}), {}, id: "category-third"
+       
           .form_group
             %label
             場所

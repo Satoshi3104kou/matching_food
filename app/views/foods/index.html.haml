@@ -23,30 +23,34 @@
         .store__form__sub_head
           = link_to "飲食店を探す",root_path, class: "main__search__header"
           .store__form_group
-          = form_with model: @food, local: true, class:"store__form__head_box" do |f|
-  
+          -# = form_with model: @food, local: true, class:"store__form__head_box" do |f|
+          = search_form_for(@q, url:search_foods_path) do |f|
             .form_group
               %label
               用途
               %span.form_require
                 必須
               .div
-              = f.select :way, Food.ways.keys, {prompt:"選択してください"}, class: 'store__select',id:"way"
+              -# = f.label :way, '学部'
+              = f.select :way_eq, Food.ways, {prompt:"選択してください"}, class: 'store__select',id:"way"
+              -# = f.collection_select :way_eq, @foods, :id, :way, {prompt:"選択してください"}, class: 'store__select',id:"way"
             .form_group
               %label
               利用動機
               %span.form_require
                 必須
               .div
-              = f.select :motivation, Food.motivations.keys, {prompt:"選択してください"}, class: 'store__select',id:"motivation"
-            
+              -# = f.collection_select :motivation_eq, @foods, :id, :motivation, {prompt:"選択してください"}, class: 'store__select',id:"way"
+
+              = f.select :motivation_eq, Food.motivations, {prompt:"選択してください"}, class: 'store__select',id:"motivation"
+              -# = f.collection_select :motivation, @foods, :id , :motivation, {prompt:"選択してください"},  class: 'store__select', id: 'motivation'
             .form_group
               %label
               ジャンル
               %span.form_require
                 必須
               .genre1
-                = f.collection_select :genre_id, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
+                = f.collection_select :genre_id_eq, @parents, :id , :name, {prompt:"選択してください"},  class: 'store__select1', id: 'parent-genre'
 
             .form_group
               %label
@@ -54,7 +58,10 @@
               %span.form_require
                 必須
               .div
-              = f.select :wards, Food.wards.keys, {prompt:"選択してください"}, class: 'store__select',id:"wards"
+              -# = f.collection_select(:wards, Food.all, :id, :wards, selected: @foods[:wards], include_blank: t('helpers.select.include_blank'))
+              -# = f.collection_select :wards_eq, @foods, :id, :wards, {prompt:"選択してください"}, class: 'store__select',id:"way"
+
+              = f.select :wards_eq, Food.wards, {prompt:"選択してください"}, class: 'store__select',id:"wards"
             
             .form_group
               %label
@@ -62,7 +69,8 @@
               %span.form_require
                 必須
               .div
-              = f.select :table, Food.tables.keys, {prompt:"選択してください"}, class: 'store__select',id:"table"
+              = f.select :table_eq, Food.tables, {prompt:"選択してください"}, class: 'store__select',id:"table"
+              -# = f.collection_select :table_eq, @foods, :id, :table, {prompt:"選択してください"}, class: 'store__select',id:"way"
 
               .form_group
                 %label
@@ -70,21 +78,26 @@
                 %span.form_require
                   必須
                 .div
-                = f.select :people, Food.people.keys, {prompt:"選択してください"}, class: 'store__select',id:"people"
-              
+                = f.select :people_eq, Food.people, {prompt:"選択してください"}, class: 'store__select',id:"people"
+                -# = f.collection_select :people_eq, @foods, :id, :people, {prompt:"選択してください"}, class: 'store__select',id:"way"
+           
               .form_group
                 %label
                 時間帯
                 %span.form_require
                   必須
                 .div
-                = f.select :time, Food.times.keys, {prompt:"選択してください"}, class: 'store__select',id:"time"
-            
+                = f.select :time_eq, Food.times, {prompt:"選択してください"}, class: 'store__select',id:"time"
+                -# = f.collection_select :time_eq, @foods, :id, :way, {prompt:"選択してください"}, class: 'store__select',id:"way"
+
               .store__form__content
                 .store__form__content_text
-
-                = link_to "検索する", search_foods_path, class: "store__form__btn"
-
+                  = f.submit :class=>"store__form__btn"
+                    
+                -# %button.store__form__btn{type: "submit"}
+                -#   検索する
+                -# = link_to "検索する", search_foods_path(@foods), class: "store__form__btn"
+                -# = f.submit
                 -# = form_with url: search_foods_path, local: true, method: :get, class: "store__form__btn" do |form|
                 -#   = form.submit "検索する", class: "store__form__btn"
 

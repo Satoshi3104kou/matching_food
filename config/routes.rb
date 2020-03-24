@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'foods#index'
+  # get 'search', to: 'foods#search'
   devise_for :users
   resources :users, only: [:show ]
   

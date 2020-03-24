@@ -1,8 +1,12 @@
 class FoodsController < ApplicationController
   def index
-    @food = Food.new
-    @parents = Genre.where(ancestry: nil)
+    @food = Food.all
     # @user = User.find(params[:id])
+    @q = Food.ransack(params[:q])
+
+    @foods =@q.result(distinct: true)
+    # @food = Food.all
+    @parents = Genre.where(ancestry: nil)
 
   end
 
@@ -12,6 +16,7 @@ class FoodsController < ApplicationController
     @parents = Genre.where(ancestry: nil)
     @store_name = current_user.store_name
   end
+
   def create
 
     @food = Food.create(food_params)
@@ -79,17 +84,22 @@ class FoodsController < ApplicationController
   end
 
   def search
+    # binding.pry
+    @q = Food.ransack(search_params)
+    # binding.pry
+    @foods = @q.result(distinct: true)
+    # binding.pry
     # @word = Word.search(params[:keyword]).first
-    # @food = Food.new
     # food = Food.find(params[:id])
     # @parents = Genre.where(ancestry: nil)
-    @food = Food.search(params[:keyword])
+
+    # @food = Food.search(params[:keyword])
     
     # if @food
-    #   redirect_to food_path(@word)
+    #   redirect_to search_foods_path(@food)
     # else          
     #   flash[:alert] = "見当たりません。"
-    #   redirect_to root_path #失敗の場合 
+    #   redirect_to search_foods_path(@food) #失敗の場合 
    
     # end
   end
@@ -111,6 +121,12 @@ class FoodsController < ApplicationController
   private
       def food_params
         params.require(:food).permit(:way, :motivation, :wards, :table, :people, :time ,:genre_id,:service).merge(user_id: current_user.id)
+      end
+     
+      def search_params
+        # params.require(:q).permit!
+        params.require(:q).permit(:way_eq, :motivation_eq, :wards_eq, :table_eq, :people_eq, :time_eq )
+        # params.require(:q).permit(:way_eq)
       end
 
 end

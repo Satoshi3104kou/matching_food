@@ -14,6 +14,17 @@
           .form_group
             %label
               サービス内容
+          - @foods.each do |food|
+            = food.user.store_name
+            .div
+            TEL
+            = food.user.phone_num
             .service
-              -# = @food.service
-              サービス
+              -# = food.way
+              = food.service
+
+          このクーポンは御予約の際にお伝えください
+
+              
+
+             
