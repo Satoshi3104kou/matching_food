@@ -95,13 +95,13 @@ class FoodsController < ApplicationController
 
     # @food = Food.search(params[:keyword])
     
-    # if @food
-    #   redirect_to search_foods_path(@food)
-    # else          
-    #   flash[:alert] = "見当たりません。"
-    #   redirect_to search_foods_path(@food) #失敗の場合 
-   
-    # end
+    if @food
+      redirect_to search_foods_path
+    else          
+      # flash[:alert] = "見当たりません。"
+      # redirect_to root_path #失敗の場合 
+      # redirect_to root_path(@foods)
+    end
   end
 
 

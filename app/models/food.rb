@@ -1,5 +1,15 @@
 class Food < ApplicationRecord
 
+  validates :way, :motivation, :wards, :table, :people, :time, :service, presence: true
+  # validates :way,              presence: true
+  # validates :motivation,       presence: true
+  # validates :wards,            presence: true
+  # validates :table,            presence: true
+  # validates :people,           presence: true
+  # validates :time,             presence: true
+  # validates :service,          presence: true
+  validates :way_eq, :motivation_eq, :wards_eq, :table_eq_eq, :people_eq, :time_eq, presence: true
+
   belongs_to :user
   belongs_to :genre
 
@@ -35,5 +45,17 @@ class Food < ApplicationRecord
   #   return Food.all unless search
   #   Food.where(' LIKE (?)', "%#{search}%")
   # end
+
+
+
+  validates :way,              presence: true
+  validates :motivation,       presence: true
+  validates :wards,            presence: true
+  validates :table,            presence: true
+  validates :people,           presence: true
+  validates :time,             presence: true
+  validates :service,          presence: true
+  # validates :name, :description,  :category_id, :condition, :delivery_charge_id, :prefecture_id, :delivery_day_id, :price, presence: true
+
 
 end
