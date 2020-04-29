@@ -2,7 +2,6 @@
   
   .header__left
     = link_to "Matching food", root_path, class: "header__left"
-   
   .header__right
     - if user_signed_in?
       = link_to "サービス登録", new_food_path, class: "header__right__logo-b"
