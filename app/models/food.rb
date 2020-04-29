@@ -8,7 +8,7 @@ class Food < ApplicationRecord
   # validates :people,           presence: true
   # validates :time,             presence: true
   # validates :service,          presence: true
-  validates :way_eq, :motivation_eq, :wards_eq, :table_eq_eq, :people_eq, :time_eq, presence: true
+  # validates :way_eq, :motivation_eq, :wards_eq, :table_eq_eq, :people_eq, :time_eq, presence: true
 
   belongs_to :user
   belongs_to :genre
