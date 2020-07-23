@@ -1,24 +1,24 @@
 # README
+matchingfood
+　飲食店側が今欲しいお客様にクーポンを提示し、お客様側も行きたい条件を検索すればお得なサービスが受けられる、飲食店とお客様をマッチングさせるアプリ。
+既存のサービスでもクーポンは発行できるが、お店の状況や時間帯、曜日や時期などを他のお客様には知られずにピンポイントで今来て欲しいお客様にお得なサービスができる。
+　お客様側も新規開拓にもなるし、普段よりも良いサービスが受けられるので、共にWin−Winの構図ができる。
+既存のサービスはどちらかといえばお客様よりのサービスだが、飲食店が欲しいお客様は日々変わるので、飲食店よりのサービス。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+DEMO
+　飲食店側がログインし、今欲しいお客様の条件と自店の条件を入力し、クーポンを発行。お客様側は人数、目的、場所などを登録し、お店が出した条件とマッチングしたらクーポンがもらえる。
 
-* Ruby version
+Features
+多くの店が登録すればそれだけ選択肢が増えるし、このサービスは既存のサービスの中でも新しい機能として使うことができる。よって顧客である飲食店側に新しいサービスとして提供することで、他のサービスとの差別化ができるようにする。
 
-* System dependencies
+Requirement
+ruby 2.5.1
+Rails 5.2.4.1
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Usage
+飲食店側がログイン。来て欲しい欲しいお客様の条件、自店の情報を登録。
+お客様は利用動機などの条件を登録し、マッチングしたクーポンがもらえる。
+Author
+香村 諭
+satoshi.koumura@gmail.com
